@@ -11,9 +11,20 @@ var myobj = new {
     }
 };
 
+var Phoneobj = new {
+    Name = "OnePlus",
+    Icon = "1+",
+    Description = new {
+        Model = "10R",
+        Processor = "Snapdragon",
+    }
+};
+
 Console.WriteLine($"{myobj.Name}, {myobj.Address.Street}");
 Console.WriteLine($"{myobj}");
 
+Console.WriteLine($"{Phoneobj.Name},{Phoneobj.Description.Model}");
+Console.WriteLine($"{Phoneobj}");
 // Anonymous types are read-only and cannot be modified
 // myobj.Name = "Jane Doe"; # will cause an error
 
@@ -21,6 +32,12 @@ Console.WriteLine($"{myobj}");
 var myobj2 = myobj with {Name = "Jane Doe"};
 Console.WriteLine($"{myobj2.Name}, {myobj2.Address.Street}");
 
+var Mobileobj = Phoneobj with {Name = "Realme"};
+Console.WriteLine($"{Mobileobj.Name}");
+
 // You can check to see if an anonymous object contains a property
 Console.WriteLine($"{myobj.GetType().GetProperty("Name") != null}");
 Console.WriteLine($"{myobj.GetType().GetProperty("Job") != null}");
+
+Console.WriteLine($"{Phoneobj.GetType().GetProperty("Name") != null}");
+Console.WriteLine($"{Mobileobj.GetType().GetProperty("Icon") != null}");
